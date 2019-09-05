@@ -1,12 +1,16 @@
-var request = new XMLHttpRequest()
+var data = {
+    email : 'zogzmiller+ta@gmail.com',
+    password : '********'
+};
 
-// Open a new connection, using the GET request on the URL endpoint
-request.open('POST', 'https://bootcampspot.com/api/instructor/v1/me', true)
-
-request.onload = function () {
-    var data = JSON.parse(this.response)
-    console.log(data)
-}
-
-// Send request
-request.send()
+fetch(myRequest)
+.then(function(response) {
+  if (!response.ok) {
+    throw new Error('HTTP error, status = ' + response.status);
+  }
+  return response.blob();
+})
+.then(function(response) {
+  let objectURL = URL.createObjectURL(response);
+  myImage.src = objectURL;
+});
