@@ -9,7 +9,7 @@ url = 'https://bootcampspot.com/api/instructor/v1/login/zogzmiller+ta@gmail.com/
 
 PARAMS = {
   "email": "zogzmiller+ta@gmail.com",
-  "password": "L0ppern1991"
+  "password": "*********"
 }
 r = requests.get(url)
 

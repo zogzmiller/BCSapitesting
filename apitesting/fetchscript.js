@@ -1,7 +1,7 @@
 var url = 'https://bootcampspot.com/api/instructor/v1/login';
 var data = {
     "email" : "zogzmiller+ta@gmail.com",
-    "password" : "L0ppern1991"
+    "password" : "********"
 };
 fetch(url, {
   method: 'POST', // or 'PUT'
