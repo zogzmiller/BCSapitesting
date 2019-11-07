@@ -1,7 +1,7 @@
 var url = 'https://bootcampspot.com/api/instructor/v1/login';
 var logindata = {
     email : 'zogzmiller+ta@gmail.com',
-    password : 'L0ppern!234'
+    password : '*********'
 };
 const request = new Request(
     url,
