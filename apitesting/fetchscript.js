@@ -1,7 +1,7 @@
 var url = 'https://bootcampspot.com/api/instructor/v1/login';
 var logindata = {
     email : 'zogzmiller+ta@gmail.com',
-    password : '*********'
+    password : 'L0ppern!234'
 };
 const request = new Request(
     url,
@@ -11,6 +11,7 @@ const request = new Request(
 //     .then(res => res.json())
 //     .then(response => console.log(JSON.stringify(response)))
 //     .catch(error => console.error('Error:', error));
+
 !async function() {
 
     let data = await fetch(request)
@@ -76,7 +77,55 @@ const request = new Request(
         {console.error('Error:', error)
     });
     console.log(gradesData)
+    var gradesdict = {}
+    gradesData.forEach(function(item){
+        let assignment = item.assignmentTitle
+        if (assignment in gradesdict);
 
+        else
+            gradesdict[assignment] = [];
+
+        gradesdict[assignment].push({'student' : item.studentName,
+        'grade' : item.grade});
+    })
+
+
+    const keys = Object.keys(gradesdict)
+    d3.select("thead")
+    .selectAll("th")
+    .data(keys)
+    .enter()
+    .append("th")
+    .html(function(d) {
+        return `<tr>${d}</tr>`;
+    });
+    const entries = Object.entries(gradesdict)
+    console.log(entries)
+    // for (const key of keys) {
+
+    //     const values = Object.values(gradesdict[key]);
+
+    //     values.forEach(function(studentgrade){
+    //         let student = studentgrade.student
+    //         let grade = studentgrade.grade
+    //         console.log(values)
+    //         // d3.select("thead")
+    //         // .selectAll("tr")
+    //         // .data(values)
+    //         // .enter()
+    //         // .append("th")
+    //         // .html(function(d) {
+    //         //     return `<tr>${d.student}</tr>`;
+    //         // });
+    //         // d3.select("tbody")
+    //         // .selectAll("tr")
+    //         // .data(values)
+    //         // .enter()
+    //         // .html(function(d) {
+    //         //     return `<tr>${d.grade}</tr>`;
+    //         // });
+    //     });
+    // };
 
     let sessionsData = await fetch('https://bootcampspot.com/api/instructor/v1/sessions', {
         method : 'POST',
