@@ -100,7 +100,23 @@ const request = new Request(
         return `<tr>${d}</tr>`;
     });
     const entries = Object.entries(gradesdict)
-    console.log(entries)
+    // console.log(entries)
+    entries.forEach(function(item){
+        console.log(item[0])
+        studentsgrade = []
+        item[1].forEach(function(inneritem){
+            studentsgrade.push(inneritem)
+        })
+        d3.select("tbody")
+        .selectAll(`tr`)
+        .data(studentsgrade)
+        .enter()
+        .append("tr")
+        .html(function(d) {
+            return `<tr>${d.student}</tr>`;
+        });
+        console.log(studentsgrade)
+    })
     // for (const key of keys) {
 
     //     const values = Object.values(gradesdict[key]);
@@ -117,13 +133,13 @@ const request = new Request(
     //         // .html(function(d) {
     //         //     return `<tr>${d.student}</tr>`;
     //         // });
-    //         // d3.select("tbody")
-    //         // .selectAll("tr")
-    //         // .data(values)
-    //         // .enter()
-    //         // .html(function(d) {
-    //         //     return `<tr>${d.grade}</tr>`;
-    //         // });
+            // d3.select("tbody")
+            // .selectAll("tr")
+            // .data(values)
+            // .enter()
+            // .html(function(d) {
+            //     return `<tr>${d.grade}</tr>`;
+            // });
     //     });
     // };
 
