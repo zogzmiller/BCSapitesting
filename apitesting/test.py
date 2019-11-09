@@ -5,13 +5,12 @@ import time
 import urllib
 import datetime
 
-url = 'https://bootcampspot.com/api/instructor/v1/login/zogzmiller+ta@gmail.com/L0ppern1991'
+url = 'https://bootcampspot.com/api/instructor/v1/login'
 
-PARAMS = {
+data = {
   "email": "zogzmiller+ta@gmail.com",
-  "password": "*********"
+  "password": "L0ppern!234"
 }
-r = requests.get(url)
-
-print(r.text)
+r = requests.post(url = url, data = data)
+print(r)
 

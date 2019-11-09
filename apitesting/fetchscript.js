@@ -91,32 +91,39 @@ const request = new Request(
 
 
     const keys = Object.keys(gradesdict)
-    d3.select("thead")
-    .selectAll("th")
+    d3.select("tbody")
+    .selectAll("tr")
     .data(keys)
     .enter()
-    .append("th")
+    .append("tr")
     .html(function(d) {
-        return `<tr>${d}</tr>`;
+        return `<th>${d}</th>`;
     });
     const entries = Object.entries(gradesdict)
-    // console.log(entries)
+    console.log(entries)
     entries.forEach(function(item){
-        console.log(item[0])
         studentsgrade = []
         item[1].forEach(function(inneritem){
             studentsgrade.push(inneritem)
         })
         d3.select("tbody")
-        .selectAll(`tr`)
+        .selectAll('tr')
+        .selectAll('td')
         .data(studentsgrade)
         .enter()
-        .append("tr")
+        .append('td')
         .html(function(d) {
-            return `<tr>${d.student}</tr>`;
+            return `<td>${d.grade}</td>`;
         });
-        console.log(studentsgrade)
-    })
+    });
+    d3.select("thead")
+    .selectAll("th")
+    .data(studentsgrade)
+    .enter()
+    .append("th")
+    .html(function(d){
+        return `<th>${d.student}</th>`
+    });
     // for (const key of keys) {
 
     //     const values = Object.values(gradesdict[key]);
@@ -173,4 +180,5 @@ const request = new Request(
         {console.error('Error:', error)
     });
     console.log(assignmentsData)
+    return gradesdict
 }();
